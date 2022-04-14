@@ -1,0 +1,25 @@
+/home/aistudio/PaDiM-Paddle
+W0414 17:47:25.009642 14958 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
+W0414 17:47:25.014963 14958 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+Training model for metal_nut
+2022-04-14 17:47:29	Epoch 0[1/7]: loss:0.00000, lr:0.00000, batch time:0.0514, data time:0.9096
+2022-04-14 17:47:31	Epoch 0[3/7]: loss:0.00000, lr:0.00000, batch time:0.0495, data time:0.7649
+2022-04-14 17:47:32	Epoch 0[5/7]: loss:0.00000, lr:0.00000, batch time:0.0499, data time:0.7848
+2022-04-14 17:47:34	Epoch 0[7/7]: loss:0.00000, lr:0.00000, batch time:0.0436, data time:0.6686
+2022-04-14 17:47:37	Train ends, total 0.00s
+2022-04-14 17:47:37	Saving model...
+2022-04-14 17:47:37	Save model in ./output/metal_nut/best.pdparams
+2022-04-14 17:47:37	Starting eval model...
+| feature extraction | test | metal_nut |: 100%|██| 4/4 [00:03<00:00,  1.26it/s]
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  if isinstance(obj, collections.Iterator):
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  ret = np.asscalar(ex)
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2366: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  return list(data) if isinstance(data, collections.MappingView) else data
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:425: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  a_min = np.asscalar(a_min.astype(scaled_dtype))
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  a_max = np.asscalar(a_max.astype(scaled_dtype))
+2022-04-14 17:48:06	Class:metal_nut:	Image AUC: 0.978
+2022-04-14 17:48:06	Class:metal_nut:	Pixel AUC: 0.955
