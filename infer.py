@@ -19,6 +19,7 @@ import argparse
 import pickle
 import numpy as np
 import datetime
+import random
 from PIL import Image
 from random import sample
 from collections import OrderedDict
@@ -64,6 +65,7 @@ def parse_args():
     parser.add_argument("--save_path", type=str, default='./test_tipc/output/')
     parser.add_argument("--category", type=str, default='capsule')
     parser.add_argument("--distribution", type=str, default='./test_tipc/output/distribution')
+    parser.add_argument("--seed", type=int, default=42)
 
     return parser.parse_args()
 
@@ -182,7 +184,7 @@ def postprocess(args, test_imgs, class_name, outputs, distribution):
     test_outputs = OrderedDict([('layer1', []), ('layer2', []), ('layer3', [])])
     # get intermediate layer outputs
     for k, v in zip(test_outputs.keys(), outputs):
-        test_outputs[k].append(v.cpu().detach())
+        test_outputs[k].append(v.detach())
     for k, v in test_outputs.items():
         test_outputs[k] = paddle.concat(v, 0)
 
@@ -194,24 +196,22 @@ def postprocess(args, test_imgs, class_name, outputs, distribution):
         embedding_vectors = paddle.concat((embedding_vectors, layer_embedding), 1)
 
     # randomly select d dimension
-    embedding_vectors = paddle.index_select(embedding_vectors,  idx, 1)
+    embedding_vectors = paddle.index_select(embedding_vectors, idx, 1)
 
     # calculate distance matrix
     B, C, H, W = embedding_vectors.shape
-    embedding_vectors = embedding_vectors.reshape((B, C, H * W)).numpy()
-    dist_list = []
-    for i in range(H * W):
-        mean = distribution[0][:, i]
-        conv_inv = np.linalg.inv(distribution[1][:, :, i])
-        dist = [mahalanobis(sample[:, i], mean, conv_inv) for sample in embedding_vectors]
-        dist_list.append(dist)
+    embedding = embedding_vectors.reshape((B, C, H * W))
+    # calculate mahalanobis distances
+    mean, covariance = paddle.to_tensor(distribution[0]), paddle.to_tensor(distribution[1])
+    inv_covariance = paddle.linalg.inv(covariance.transpose((2, 0, 1)))
 
-    dist_list = np.array(dist_list).transpose(1, 0).reshape(B, H, W)
-    # upsample
-    dist_list = paddle.to_tensor(dist_list)
-    score_map = F.interpolate(dist_list.unsqueeze(1), size=(224,224), mode='bilinear',
-                              align_corners=False).squeeze(1).numpy()
+    delta = (embedding - mean).transpose((2, 0, 1))
 
+    distances = (paddle.matmul(delta, inv_covariance) * delta).sum(2).transpose((1, 0))
+    distances = distances.reshape((B, H, W))
+    distances = paddle.sqrt(distances)
+    score_map = F.interpolate(distances.unsqueeze(1), size=(224,224), mode='bilinear',
+                            align_corners=False).squeeze(1).numpy()
 
     # apply gaussian smoothing on the score map
     for i in range(score_map.shape[0]):
@@ -284,6 +284,9 @@ def denormalization(x):
 
 def main():
     args = parse_args()
+
+    random.seed(args.seed)
+    paddle.seed(args.seed)
 
     model_name = 'PaDiM'
     print(f"Inference model({model_name})...")
@@ -374,7 +377,7 @@ def main():
             output_data = output_tensor.copy_to_cpu()
             results.append(output_data)
 
-        # postprocess(args, test_imgs, args.category, results, distribution) # 可视化
+        postprocess(args, test_imgs, args.category, results, distribution) # 可视化
 
         # get post process time cost
         if args.enable_benchmark:

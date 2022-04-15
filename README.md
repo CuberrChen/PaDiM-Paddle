@@ -136,18 +136,19 @@ TIPC结果：
 - 预训练模型的静态图导出与推理测试：
 
 ```shell
-python export_model.py --depth 18 --img_size=224 --model_path=./test_tipc/output/carpet/best.pdparams --save_dir=./test_tipc/output
+python export_model.py --depth 18 --img_size=224 --model_path=./output/carpet/best.pdparams --save_dir=./output
 ```
 注意：由于该算法并不训练模型，仅仅由预训练模型生成数据分布数据，因此导出分为两个部分，一部分是预训练模型（`model.pdiparams,model.pdmodel`），一部分是分布数据(`distribution`)。
 
 ```shell
-python infer.py --use_gpu=True --model_file=./test_tipc/output/model.pdmodel --input_file=./test_tipc/data/capsule/test/crack/001.png --params_file=./test_tipc/output/model.pdiparams --category=carpet  --distribution=./test_tipc/output/distribution
+!python infer.py --use_gpu=True --model_file=output/model.pdmodel --input_file=/home/aistudio/data/carpet/test/color/000.png --params_file=output/model.pdiparams --category=carpet  --distribution=./output/distribution --save_path=./output --seed=42
 ```
 可正常导出与推理。
+推理结果与动态图一致。
+![infer](asserts/carpet_0_infer.png)
 
 注意：
-- 由于算法本身对于数据精度，也就是小数点位数异常敏感（不同小数点位数，算出来的分布匹配情况是不一样的，导致即使可以导出推理，**backbone特征提取数据一致,后处理代码一模一样的情况下其结果会与动态图也不一致**。因此该算法并不适合动静态转换）
-- test_tipc时的infer，由于test_tipc限制了可视化环境。开启可视化会报错。注释掉infer 377行。
+- test_tipc时的infer，由于test_tipc限制了可视化环境。开启可视化会报错。需要**注释掉infer 380行的后处理步骤**。
 
 ## 5 代码结构与说明
 **代码结构**
