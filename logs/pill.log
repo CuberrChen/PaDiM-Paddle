@@ -1,17 +1,17 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:48:10.338475 15040 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:48:10.343847 15040 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 22:54:55.145493 24453 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 22:54:55.150499 24453 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for pill
-2022-04-14 17:48:15	Epoch 0[1/9]: loss:0.00000, lr:0.00000, batch time:0.0517, data time:1.1883
-2022-04-14 17:48:17	Epoch 0[3/9]: loss:0.00000, lr:0.00000, batch time:0.0506, data time:1.0567
-2022-04-14 17:48:19	Epoch 0[5/9]: loss:0.00000, lr:0.00000, batch time:0.0496, data time:1.0436
-2022-04-14 17:48:21	Epoch 0[7/9]: loss:0.00000, lr:0.00000, batch time:0.0492, data time:1.0506
-2022-04-14 17:48:23	Epoch 0[9/9]: loss:0.00000, lr:0.00000, batch time:0.0193, data time:0.3663
-2022-04-14 17:48:26	Train ends, total 0.00s
-2022-04-14 17:48:26	Saving model...
-2022-04-14 17:48:26	Save model in ./output/pill/best.pdparams
-2022-04-14 17:48:26	Starting eval model...
-| feature extraction | test | pill |: 100%|███████| 6/6 [00:06<00:00,  1.08it/s]
+2022-04-18 22:55:01	Epoch 0[1/9]: loss:0.00000, lr:0.00000, batch time:0.0562, data time:1.1681
+2022-04-18 22:55:03	Epoch 0[3/9]: loss:0.00000, lr:0.00000, batch time:0.0540, data time:1.0111
+2022-04-18 22:55:05	Epoch 0[5/9]: loss:0.00000, lr:0.00000, batch time:0.0542, data time:1.0609
+2022-04-18 22:55:07	Epoch 0[7/9]: loss:0.00000, lr:0.00000, batch time:0.0541, data time:1.0522
+2022-04-18 22:55:09	Epoch 0[9/9]: loss:0.00000, lr:0.00000, batch time:0.0213, data time:0.3613
+2022-04-18 22:55:12	Train ends, total 0.00s
+2022-04-18 22:55:12	Saving model...
+2022-04-18 22:55:13	Save model in ./output/pill/best.pdparams
+2022-04-18 22:55:13	Starting eval model...
+| feature extraction | test | pill |: 100%|███████| 6/6 [00:06<00:00,  1.11it/s]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -22,5 +22,5 @@ Training model for pill
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:49:09	Class:pill:	Image AUC: 0.881
-2022-04-14 17:49:09	Class:pill:	Pixel AUC: 0.942
+2022-04-18 22:57:55	Class:pill:	Image AUC: 0.885
+2022-04-18 22:57:55	Class:pill:	Pixel AUC: 0.955

@@ -1,17 +1,17 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:49:13.221665 15095 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:49:13.226986 15095 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 22:57:59.653411 24737 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 22:57:59.658509 24737 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for screw
-2022-04-14 17:49:17	Epoch 0[1/10]: loss:0.00000, lr:0.00000, batch time:0.0525, data time:0.8503
-2022-04-14 17:49:19	Epoch 0[3/10]: loss:0.00000, lr:0.00000, batch time:0.0503, data time:0.7029
-2022-04-14 17:49:20	Epoch 0[5/10]: loss:0.00000, lr:0.00000, batch time:0.0495, data time:0.7058
-2022-04-14 17:49:22	Epoch 0[7/10]: loss:0.00000, lr:0.00000, batch time:0.0496, data time:0.7148
-2022-04-14 17:49:23	Epoch 0[9/10]: loss:0.00000, lr:0.00000, batch time:0.0494, data time:0.7046
-2022-04-14 17:49:27	Train ends, total 0.00s
-2022-04-14 17:49:27	Saving model...
-2022-04-14 17:49:28	Save model in ./output/screw/best.pdparams
-2022-04-14 17:49:28	Starting eval model...
-| feature extraction | test | screw |: 100%|██████| 5/5 [00:04<00:00,  1.10it/s]
+2022-04-18 22:58:05	Epoch 0[1/10]: loss:0.00000, lr:0.00000, batch time:0.0583, data time:0.9044
+2022-04-18 22:58:07	Epoch 0[3/10]: loss:0.00000, lr:0.00000, batch time:0.0559, data time:0.7541
+2022-04-18 22:58:09	Epoch 0[5/10]: loss:0.00000, lr:0.00000, batch time:0.0565, data time:0.7504
+2022-04-18 22:58:10	Epoch 0[7/10]: loss:0.00000, lr:0.00000, batch time:0.0555, data time:0.7434
+2022-04-18 22:58:12	Epoch 0[9/10]: loss:0.00000, lr:0.00000, batch time:0.0554, data time:0.7101
+2022-04-18 22:58:16	Train ends, total 0.00s
+2022-04-18 22:58:16	Saving model...
+2022-04-18 22:58:17	Save model in ./output/screw/best.pdparams
+2022-04-18 22:58:17	Starting eval model...
+| feature extraction | test | screw |: 100%|██████| 5/5 [00:04<00:00,  1.12it/s]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -22,5 +22,5 @@ Training model for screw
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:50:06	Class:screw:	Image AUC: 0.777
-2022-04-14 17:50:06	Class:screw:	Pixel AUC: 0.974
+2022-04-18 23:00:57	Class:screw:	Image AUC: 0.729
+2022-04-18 23:00:57	Class:screw:	Pixel AUC: 0.973

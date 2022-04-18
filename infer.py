@@ -65,7 +65,7 @@ def parse_args():
     parser.add_argument("--save_path", type=str, default='./test_tipc/output/')
     parser.add_argument("--category", type=str, default='capsule')
     parser.add_argument("--distribution", type=str, default='./test_tipc/output/distribution')
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--seed", type=int, default=7)
 
     return parser.parse_args()
 

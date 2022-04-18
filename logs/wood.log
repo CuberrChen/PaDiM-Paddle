@@ -1,16 +1,16 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:42:20.405023 14491 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:42:20.410447 14491 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 22:40:30.763882 23067 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 22:40:30.768728 23067 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for wood
-2022-04-14 17:42:26	Epoch 0[1/8]: loss:0.00000, lr:0.00000, batch time:0.0649, data time:2.1554
-2022-04-14 17:42:30	Epoch 0[3/8]: loss:0.00000, lr:0.00000, batch time:0.0501, data time:2.0243
-2022-04-14 17:42:34	Epoch 0[5/8]: loss:0.00000, lr:0.00000, batch time:0.0507, data time:1.8512
-2022-04-14 17:42:38	Epoch 0[7/8]: loss:0.00000, lr:0.00000, batch time:0.0502, data time:1.9510
-2022-04-14 17:42:42	Train ends, total 0.00s
-2022-04-14 17:42:42	Saving model...
-2022-04-14 17:42:42	Save model in ./output/wood/best.pdparams
-2022-04-14 17:42:42	Starting eval model...
-| feature extraction | test | wood |: 100%|███████| 3/3 [00:05<00:00,  1.80s/it]
+2022-04-18 22:40:38	Epoch 0[1/8]: loss:0.00000, lr:0.00000, batch time:0.0611, data time:2.1368
+2022-04-18 22:40:42	Epoch 0[3/8]: loss:0.00000, lr:0.00000, batch time:0.0564, data time:1.9769
+2022-04-18 22:40:46	Epoch 0[5/8]: loss:0.00000, lr:0.00000, batch time:0.0560, data time:1.8647
+2022-04-18 22:40:50	Epoch 0[7/8]: loss:0.00000, lr:0.00000, batch time:0.0561, data time:1.9832
+2022-04-18 22:40:55	Train ends, total 0.00s
+2022-04-18 22:40:55	Saving model...
+2022-04-18 22:40:55	Save model in ./output/wood/best.pdparams
+2022-04-18 22:40:55	Starting eval model...
+| feature extraction | test | wood |: 100%|███████| 3/3 [00:05<00:00,  1.81s/it]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -21,5 +21,5 @@ Training model for wood
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:43:05	Class:wood:	Image AUC: 0.984
-2022-04-14 17:43:05	Class:wood:	Pixel AUC: 0.929
+2022-04-18 22:42:19	Class:wood:	Image AUC: 0.994
+2022-04-18 22:42:19	Class:wood:	Pixel AUC: 0.938

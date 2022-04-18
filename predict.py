@@ -29,7 +29,7 @@ def parse_args():
     parser.add_argument("--category", type=str, default='leather', help="category name for MvTec AD dataset")
     parser.add_argument("--depth", type=int, default=18, help="resnet depth")
     parser.add_argument("--save_picture", type=bool, default=True)
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--seed", type=int, default=7)
     parser.add_argument("--threshold", type=float, default=0.5)
 
     return parser.parse_args()

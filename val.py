@@ -35,7 +35,7 @@ def parse_args():
     parser.add_argument("--depth", type=int, default=18, help="resnet depth")
     parser.add_argument("--save_picture", type=bool, default=True)
     parser.add_argument("--print_freq", type=int, default=2)
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--seed", type=int, default=7)
     return parser.parse_args()
 
 
@@ -101,14 +101,31 @@ def val(args, model, test_dataloader, class_name, idx):
     embedding_vectors = paddle.index_select(embedding_vectors,  idx, 1)
 
     # calculate distance matrix
-    B, C, H, W = embedding_vectors.shape
-    embedding_vectors = embedding_vectors.reshape((B, C, H * W)).numpy()
-    dist_list = []
-    for i in range(H * W):
-        mean = model.distribution[0][:, i]
-        conv_inv = np.linalg.inv(model.distribution[1][:, :, i])
-        dist = [mahalanobis(sample[:, i], mean, conv_inv) for sample in embedding_vectors]
-        dist_list.append(dist)
+    if paddle.is_compiled_with_cuda():
+
+        def mahalanobis_pd(sample, mean, conv_inv):
+            return paddle.sqrt(paddle.matmul(paddle.matmul((sample - mean).t(), conv_inv), (sample - mean)))[0]
+
+        B, C, H, W = embedding_vectors.shape
+        embedding_vectors = embedding_vectors.reshape((B, C, H * W)).cuda()
+        model.distribution[0] = paddle.to_tensor(model.distribution[0]).cuda()
+        model.distribution[1] = paddle.to_tensor(model.distribution[1]).cuda()
+        dist_list = []
+        for i in range(H * W):
+            mean = model.distribution[0][:, i]
+            conv_inv = paddle.linalg.inv(model.distribution[1][:, :, i])
+            dist = [mahalanobis_pd(sample[:, i], mean, conv_inv).numpy()[0] for sample in embedding_vectors]
+            dist_list.append(dist)
+    else:
+        # calculate distance matrix
+        B, C, H, W = embedding_vectors.shape
+        embedding_vectors = embedding_vectors.reshape((B, C, H * W)).numpy()
+        dist_list = []
+        for i in range(H * W):
+            mean = model.distribution[0][:, i]
+            conv_inv = np.linalg.inv(model.distribution[1][:, :, i])
+            dist = [mahalanobis(sample[:, i], mean, conv_inv) for sample in embedding_vectors]
+            dist_list.append(dist)
 
     dist_list = np.array(dist_list).transpose(1, 0).reshape(B, H, W)
 

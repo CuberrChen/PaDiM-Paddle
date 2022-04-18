@@ -1,16 +1,16 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:44:15.186671 14675 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:44:15.192171 14675 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 22:44:05.339673 23424 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 22:44:05.344594 23424 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for cable
-2022-04-14 17:44:20	Epoch 0[1/7]: loss:0.00000, lr:0.00000, batch time:0.0515, data time:1.9164
-2022-04-14 17:44:24	Epoch 0[3/7]: loss:0.00000, lr:0.00000, batch time:0.0494, data time:1.7672
-2022-04-14 17:44:27	Epoch 0[5/7]: loss:0.00000, lr:0.00000, batch time:0.0496, data time:1.7387
-2022-04-14 17:44:31	Epoch 0[7/7]: loss:0.00000, lr:0.00000, batch time:0.0537, data time:1.8140
-2022-04-14 17:44:34	Train ends, total 0.00s
-2022-04-14 17:44:34	Saving model...
-2022-04-14 17:44:34	Save model in ./output/cable/best.pdparams
-2022-04-14 17:44:34	Starting eval model...
-| feature extraction | test | cable |: 100%|██████| 5/5 [00:08<00:00,  1.75s/it]
+2022-04-18 22:44:12	Epoch 0[1/7]: loss:0.00000, lr:0.00000, batch time:0.0572, data time:1.9229
+2022-04-18 22:44:16	Epoch 0[3/7]: loss:0.00000, lr:0.00000, batch time:0.0555, data time:1.7668
+2022-04-18 22:44:19	Epoch 0[5/7]: loss:0.00000, lr:0.00000, batch time:0.0564, data time:1.7222
+2022-04-18 22:44:23	Epoch 0[7/7]: loss:0.00000, lr:0.00000, batch time:0.0559, data time:1.7695
+2022-04-18 22:44:26	Train ends, total 0.00s
+2022-04-18 22:44:26	Saving model...
+2022-04-18 22:44:27	Save model in ./output/cable/best.pdparams
+2022-04-18 22:44:27	Starting eval model...
+| feature extraction | test | cable |: 100%|██████| 5/5 [00:08<00:00,  1.72s/it]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -21,5 +21,5 @@ Training model for cable
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:45:16	Class:cable:	Image AUC: 0.854
-2022-04-14 17:45:16	Class:cable:	Pixel AUC: 0.951
+2022-04-18 22:47:35	Class:cable:	Image AUC: 0.833
+2022-04-18 22:47:35	Class:cable:	Pixel AUC: 0.951

@@ -1,16 +1,16 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:50:37.375968 15260 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:50:37.381347 15260 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 23:02:03.226519 25152 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 23:02:03.231539 25152 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for transistor
-2022-04-14 17:50:42	Epoch 0[1/7]: loss:0.00000, lr:0.00000, batch time:0.0522, data time:1.9047
-2022-04-14 17:50:46	Epoch 0[3/7]: loss:0.00000, lr:0.00000, batch time:0.0501, data time:1.7832
-2022-04-14 17:50:50	Epoch 0[5/7]: loss:0.00000, lr:0.00000, batch time:0.0505, data time:1.7888
-2022-04-14 17:50:53	Epoch 0[7/7]: loss:0.00000, lr:0.00000, batch time:0.0338, data time:1.1623
-2022-04-14 17:50:56	Train ends, total 0.00s
-2022-04-14 17:50:56	Saving model...
-2022-04-14 17:50:56	Save model in ./output/transistor/best.pdparams
-2022-04-14 17:50:56	Starting eval model...
-| feature extraction | test | transistor |: 100%|█| 4/4 [00:05<00:00,  1.42s/it]
+2022-04-18 23:02:10	Epoch 0[1/7]: loss:0.00000, lr:0.00000, batch time:0.0557, data time:1.9602
+2022-04-18 23:02:14	Epoch 0[3/7]: loss:0.00000, lr:0.00000, batch time:0.0534, data time:1.7995
+2022-04-18 23:02:17	Epoch 0[5/7]: loss:0.00000, lr:0.00000, batch time:0.0528, data time:1.7867
+2022-04-18 23:02:20	Epoch 0[7/7]: loss:0.00000, lr:0.00000, batch time:0.0375, data time:1.1711
+2022-04-18 23:02:24	Train ends, total 0.00s
+2022-04-18 23:02:24	Saving model...
+2022-04-18 23:02:24	Save model in ./output/transistor/best.pdparams
+2022-04-18 23:02:24	Starting eval model...
+| feature extraction | test | transistor |: 100%|█| 4/4 [00:05<00:00,  1.41s/it]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -21,5 +21,5 @@ Training model for transistor
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:51:24	Class:transistor:	Image AUC: 0.952
-2022-04-14 17:51:24	Class:transistor:	Pixel AUC: 0.965
+2022-04-18 23:04:04	Class:transistor:	Image AUC: 0.947
+2022-04-18 23:04:04	Class:transistor:	Pixel AUC: 0.970

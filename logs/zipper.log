@@ -1,16 +1,16 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:51:28.612154 15309 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:51:28.617405 15309 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 23:04:08.703464 25367 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 23:04:08.708618 25367 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for zipper
-2022-04-14 17:51:33	Epoch 0[1/8]: loss:0.00000, lr:0.00000, batch time:0.0511, data time:0.9235
-2022-04-14 17:51:34	Epoch 0[3/8]: loss:0.00000, lr:0.00000, batch time:0.0496, data time:0.7221
-2022-04-14 17:51:36	Epoch 0[5/8]: loss:0.00000, lr:0.00000, batch time:0.0500, data time:0.7116
-2022-04-14 17:51:37	Epoch 0[7/8]: loss:0.00000, lr:0.00000, batch time:0.0500, data time:0.7105
-2022-04-14 17:51:41	Train ends, total 0.00s
-2022-04-14 17:51:41	Saving model...
-2022-04-14 17:51:41	Save model in ./output/zipper/best.pdparams
-2022-04-14 17:51:41	Starting eval model...
-| feature extraction | test | zipper |: 100%|█████| 5/5 [00:04<00:00,  1.19it/s]
+2022-04-18 23:04:14	Epoch 0[1/8]: loss:0.00000, lr:0.00000, batch time:0.0571, data time:0.8705
+2022-04-18 23:04:16	Epoch 0[3/8]: loss:0.00000, lr:0.00000, batch time:0.0562, data time:0.7199
+2022-04-18 23:04:17	Epoch 0[5/8]: loss:0.00000, lr:0.00000, batch time:0.0561, data time:0.7150
+2022-04-18 23:04:19	Epoch 0[7/8]: loss:0.00000, lr:0.00000, batch time:0.0554, data time:0.7157
+2022-04-18 23:04:23	Train ends, total 0.00s
+2022-04-18 23:04:23	Saving model...
+2022-04-18 23:04:23	Save model in ./output/zipper/best.pdparams
+2022-04-18 23:04:23	Starting eval model...
+| feature extraction | test | zipper |: 100%|█████| 5/5 [00:04<00:00,  1.18it/s]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -21,5 +21,5 @@ Training model for zipper
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:52:17	Class:zipper:	Image AUC: 0.862
-2022-04-14 17:52:17	Class:zipper:	Pixel AUC: 0.979
+2022-04-18 23:06:47	Class:zipper:	Image AUC: 0.907
+2022-04-18 23:06:47	Class:zipper:	Pixel AUC: 0.983

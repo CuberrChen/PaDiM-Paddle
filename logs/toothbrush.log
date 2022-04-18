@@ -1,13 +1,13 @@
 /home/aistudio/PaDiM-Paddle
-W0414 17:50:10.948980 15187 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.0, Runtime API Version: 10.1
-W0414 17:50:10.954478 15187 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+W0418 23:01:01.799858 25015 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W0418 23:01:01.804762 25015 device_context.cc:465] device: 0, cuDNN Version: 7.6.
 Training model for toothbrush
-2022-04-14 17:50:16	Epoch 0[1/2]: loss:0.00000, lr:0.00000, batch time:0.0516, data time:1.8216
-2022-04-14 17:50:20	Train ends, total 0.00s
-2022-04-14 17:50:20	Saving model...
-2022-04-14 17:50:20	Save model in ./output/toothbrush/best.pdparams
-2022-04-14 17:50:20	Starting eval model...
-| feature extraction | test | toothbrush |: 100%|█| 2/2 [00:02<00:00,  1.55s/it]
+2022-04-18 23:01:08	Epoch 0[1/2]: loss:0.00000, lr:0.00000, batch time:0.0580, data time:1.8082
+2022-04-18 23:01:12	Train ends, total 0.00s
+2022-04-18 23:01:12	Saving model...
+2022-04-18 23:01:13	Save model in ./output/toothbrush/best.pdparams
+2022-04-18 23:01:13	Starting eval model...
+| feature extraction | test | toothbrush |: 100%|█| 2/2 [00:02<00:00,  1.54s/it]
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/cbook/__init__.py:2349: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
   if isinstance(obj, collections.Iterator):
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/colors.py:101: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
@@ -18,5 +18,5 @@ Training model for toothbrush
   a_min = np.asscalar(a_min.astype(scaled_dtype))
 /opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/matplotlib/image.py:426: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
   a_max = np.asscalar(a_max.astype(scaled_dtype))
-2022-04-14 17:50:33	Class:toothbrush:	Image AUC: 1.000
-2022-04-14 17:50:33	Class:toothbrush:	Pixel AUC: 0.985
+2022-04-18 23:01:59	Class:toothbrush:	Image AUC: 0.992
+2022-04-18 23:01:59	Class:toothbrush:	Pixel AUC: 0.986

@@ -14,7 +14,7 @@ PaDiM是一种基于图像Patch的算法。它依赖于预先训练好的CNN功�
 在整个训练批次中，为每个面片嵌入生成一个多元高斯分布。因此，对于训练图像集的每个面片，我们有不同的多元高斯分布。这些高斯分布表示为高斯参数矩阵。
 在推理过程中，使用马氏距离对测试图像的每个面片位置进行评分。它使用训练期间为面片计算的协方差矩阵的逆矩阵。
 马氏距离矩阵形成了异常图，分数越高表示异常区域。
-本项目基于PaddlePaddle框架复现了STFPM，并在MvTec数据集上进行了实验。
+本项目基于PaddlePaddle框架复现了PaDiM，并在MvTec数据集上进行了实验。
 
 **论文：**
 - [1]  Simonjan, Jennifer  and  Unluturk, Bige D.  and  Akyildiz, Ian F. [PaDiM: a Patch Distribution Modeling Framework for Anomaly Detection and Localization](https://arxiv.org/pdf/2011.08785)
@@ -32,22 +32,22 @@ PaDiM是一种基于图像Patch的算法。它依赖于预先训练好的CNN功�
 |                |  Avg  | Carpet | Grid  | Leather | Tile  | Wood  | Bottle | Cable | Capsule | Hazelnut | Metal Nut | Pill  | Screw | Toothbrush | Transistor | Zipper |
 | -------------- | :---: | :----: | :---: | :-----: | :---: | :---: | :----: | :---: | :-----: | :------: | :-------: | :---: | :---: | :--------: | :--------: | :----: |
 | anomalib      | 0.891 | 0.945  | 0.857 |  0.982  | 0.950 | 0.976 | 0.994  | 0.844 |  0.901  |  0.750   |   0.961   | 0.863 | 0.759 |   0.889    |   0.920    | 0.780  |
-| Paddle | 0.922 | 0.998  |  0.915 |  1.000  | 0.941 | 0.984 | 0.999  | 0.854 |  0.854  |  0.848  |   0.978   | 0.881 | 0.777 |    1.000     |   0.952    | 0.862  |
+| Paddle | 0.925 | 1.000 |  0.907 |  1.000  | 0.981 | 0.994 | 0.998  | 0.833 |  0.863  |  0.870  |   0.970   | 0.885 | 0.729 |    0.992 |   0.947 | 0.907  |
 
 ### Pixel-Level AUC
 
 |                |  Avg  | Carpet | Grid  | Leather | Tile  | Wood  | Bottle | Cable | Capsule | Hazelnut | Metal Nut | Pill  | Screw | Toothbrush | Transistor | Zipper |
 | -------------- | :---: | :----: | :---: | :-----: | :---: | :---: | :----: | :---: | :-----: | :------: | :-------: | :---: | :---: | :--------: | :--------: | :----: |
 | anomalib     | 0.968 | 0.984  | 0.918 |  0.994  | 0.934 | 0.947 | 0.983  | 0.965 |  0.984  |  0.978   |   0.970   | 0.957 | 0.978 |   0.988    |   0.968    | 0.979  |
-| Paddle | 0.961 |0.989  | 0.941 |  0.988  | 0.889 | 0.929 | 0.978  | 0.951 |  0.982  |  0.973   |   0.955   | 0.942 | 0.974 |   0.985    |   0.965    | 0.979  |
+| Paddle | 0.966 |0.989  | 0.926 |  0.991  | 0.925 | 0.938 | 0.979  | 0.951 |  0.982  |  0.979   |   0.966   | 0.955 | 0.973 |   0.986    |   0.970    | 0.983  |
 
 image-level auc的Mean为0.922。
 
-pixel-level auc的Mean为0.961, 误差0.007，在误差允许范围内。
+pixel-level auc的Mean为0.966(966.2, 0.18% gap)。
 
 
 训练日志：[logs](logs/)
-AIStudio预训练权重和日志：[AIStudio预训练权重](https://aistudio.baidu.com/aistudio/datasetdetail/139041)
+AIStudio预训练权重和日志：[AIStudio预训练权重](https://aistudio.baidu.com/aistudio/datasetdetail/140122)
 
 ## 3 数据集
 数据集网站：[MvTec数据集](https://www.mvtec.com/company/research/datasets/mvtec-ad/)
@@ -75,15 +75,20 @@ cd PaDiM-Paddle
 ```
 
 ### 第二步：训练模型
+
+首先下载resnet18预训练模型，为了与参考项目对齐，这里采用从torch转换的resnet18参数[下载地址](https://aistudio.baidu.com/aistudio/datasetdetail/139972)
+
+放置于任意路径，这里推荐放在`./model/resnet18.pdiparams`
+
 MVTec共有15个类别的子数据集，因此每个类别都需要单独训练一个模型；
 在训练时，通过category参数来指定类别数据进行训练。data_path指定上述数据集路径**PATH/MVTec** 。
 val表示是否在训练时开启指标计算。save_path指定模型保存路径，会在这个路径下生成category的目录。
-seed表示随机数种子，这里根据给定参考项目取`42`.
+seed表示随机数种子，这里取7.
 
 开始训练：
 以carpet为例：
 ```bash
-python train.py --data_path=PATH/MVTec/ --category carpet  --val=True --save_path=./output --seed 42
+python train.py --data_path=PATH/MVTec/ --category carpet  --val=True --save_path=./output --seed 7 --pretrained_backbone=./models/resnet18.pdiparams
 ```
 
 注意：由于这个算法不需要优化，所有没有学习率和损失log。
@@ -91,13 +96,13 @@ python train.py --data_path=PATH/MVTec/ --category carpet  --val=True --save_pat
 ### 第三步：验证
 需要指定训练好的模型参数路径`model_path=output/carpet/best.pdparams`
 ```bash
-python val.py --data_path=PATH/MVTec/ --category carpet  --model_path=./output/carpet/best.pdparams --save_picture=True --save_path=./output --seed 42
+python val.py --data_path=PATH/MVTec/ --category carpet  --model_path=./output/carpet/best.pdparams --save_picture=True --save_path=./output --seed 7
 ```
 
 ### 第四步：预测
 这里需要指定单张图片路径picture_path以及保存预测结果路径save_path，会在生成预测结果predict.png
 ```shell
-python predict.py --picture_path=PATH/MVTec/carpet/test/color/000.png --category carpet  --model_path=./output/carpet/best.pdparams --save_picture=True --save_path=predict.png --seed 42
+python predict.py --picture_path=PATH/MVTec/carpet/test/color/000.png --category carpet  --model_path=./output/carpet/best.pdparams --save_picture=True --save_path=predict.png --seed 7
 ```
 
 如下：
@@ -107,9 +112,13 @@ python predict.py --picture_path=PATH/MVTec/carpet/test/color/000.png --category
 
 ### 第五步：TIPC
 
-**详细日志在[test_tipc/output](test_tipc/output/STFPM)**
+**详细日志在[test_tipc/output](test_tipc/output/PaDiM)**
 
 TIPC: [TIPC: test_tipc/README.md](test_tipc/README.md)
+
+注意：
+
+- test_tipc时的infer，由于test_tipc限制了可视化环境。开启可视化会报错。需要**注释掉infer 380行的后处理步骤**。
 
 首先安装auto_log，需要进行安装，安装方式如下：
 auto_log的详细介绍参考https://github.com/LDOUBLEV/AutoLog。
@@ -141,14 +150,12 @@ python export_model.py --depth 18 --img_size=224 --model_path=./output/carpet/be
 注意：由于该算法并不训练模型，仅仅由预训练模型生成数据分布数据，因此导出分为两个部分，一部分是预训练模型（`model.pdiparams,model.pdmodel`），一部分是分布数据(`distribution`)。
 
 ```shell
-!python infer.py --use_gpu=True --model_file=output/model.pdmodel --input_file=/home/aistudio/data/carpet/test/color/000.png --params_file=output/model.pdiparams --category=carpet  --distribution=./output/distribution --save_path=./output --seed=42
+!python infer.py --use_gpu=True --model_file=output/model.pdmodel --input_file=/home/aistudio/data/carpet/test/color/000.png --params_file=output/model.pdiparams --category=carpet  --distribution=./output/distribution --save_path=./output --seed=7
 ```
 可正常导出与推理。
 推理结果与动态图一致。
 ![infer](asserts/carpet_0_infer.png)
 
-注意：
-- test_tipc时的infer，由于test_tipc限制了可视化环境。开启可视化会报错。需要**注释掉infer 380行的后处理步骤**。
 
 ## 5 代码结构与说明
 **代码结构**
