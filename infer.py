@@ -12,18 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import cv2
 import os
 from os import path as osp
 import argparse
 import pickle
 import numpy as np
-import datetime
 import random
 from PIL import Image
 from random import sample
 from collections import OrderedDict
-from scipy.spatial.distance import mahalanobis
 from scipy.ndimage import gaussian_filter
 from skimage import morphology
 from skimage.segmentation import mark_boundaries
@@ -377,7 +374,10 @@ def main():
             output_data = output_tensor.copy_to_cpu()
             results.append(output_data)
 
-        postprocess(args, test_imgs, args.category, results, distribution) # 可视化
+        try:
+            postprocess(args, test_imgs, args.category, results, distribution) # 可视化
+        except:
+            pass
 
         # get post process time cost
         if args.enable_benchmark:
