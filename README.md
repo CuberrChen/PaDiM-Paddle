@@ -116,9 +116,9 @@ python predict.py --picture_path=PATH/MVTec/carpet/test/color/000.png --category
 
 TIPC: [TIPC: test_tipc/README.md](test_tipc/README.md)
 
-注意：
+**注意**：
 
-- test_tipc时的infer，由于test_tipc限制了可视化环境。开启可视化会报错。需要**注释掉infer 380行的后处理步骤**。
+- test_tipc时的infer，由于test_tipc限制了可视化环境, 开启可视化会报错，需要**注释掉infer 380行的后处理步骤** ，不进行test_tipc时是可以正常推理保存可视化结果的。
 
 首先安装auto_log，需要进行安装，安装方式如下：
 auto_log的详细介绍参考https://github.com/LDOUBLEV/AutoLog。

@@ -5,7 +5,7 @@ gpu_list:0
 Global.use_gpu:True|True
 Global.auto_cast:fp32
 Global.epoch_num:lite_train_lite_infer=1
-Global.save_model_dir:./output/
+Global.save_model_dir:./test_tipc/output/
 Train.loader.batch_size_per_card:lite_train_lite_infer=2
 Global.pretrained_model:null
 train_model_name:latest
@@ -13,7 +13,7 @@ train_infer_img_dir:./test_tipc/data/MVTec
 null:null
 ##
 trainer:norm_train
-norim_train:train.py --data_path=./test_tipc/data/MVTec --category capsule  --val=False --save_path=./test_tipc/output/ --seed 42
+norim_train:train.py --data_path=./test_tipc/data/MVTec --category capsule  --val=False --save_path=./test_tipc/output/ --seed 7
 pact_train:null
 fpgm_train:null
 distill_train:null
@@ -37,7 +37,7 @@ inference_dir:null
 infer_model:./test_tipc/output/model.pdmodel
 infer_export:null
 infer_quant:False
-inference:infer.py
+inference:infer.py --seed=7 --distribution=./test_tipc/output/distribution --category=capsule --save_path=./test_tipc/output/
 --use_gpu:True|False
 --enable_mkldnn:False
 --cpu_threads:1|2
